@@ -1,0 +1,4 @@
+export const QUERY_TYPE = {
+    ATHLETE_REGISTER: 'ATHLETE_REGISTER',
+    ATHLETE_ME: 'ATHLETE_ME',
+} as const;
