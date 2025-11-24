@@ -2,11 +2,26 @@ import { useLoadAthlete } from '../queries/useLoadAthlete';
 import { ATHLETE_PROFILE_STATUS } from '../enums/athleteProfileStatus';
 import FinishSignupPage from './FinishSignupPage';
 import ProfileNavBar from '../components/profileNavbar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useAuth } from 'react-oidc-context';
 
 export default function ProfilePage() {
+    const auth = useAuth();
     const { data: athlete, isLoading, isError, error } = useLoadAthlete();
     const [showFinishSignup, setShowFinishSignup] = useState(true);
+
+    useEffect(() => {
+        if (isError) {
+            const status = (error as any)?.response?.status;
+
+            if (status === 401) {
+                // Clear stale session and go to login
+                auth.removeUser().then(() => {
+                    auth.signinRedirect();
+                });
+            }
+        }
+    }, [isError, error, auth]);
 
     if (isLoading) return <div>Loading athlete…</div>;
     if (isError) return <div>Error: {error?.message}</div>;

@@ -6,6 +6,7 @@ import { UNIT_SYSTEM } from '../enums/unitSystem';
 import { useUpdateAthlete } from '../queries/useUpdateAthlete';
 import { useUploadAthleteAvatar } from '../queries/useUploadAthleteAvatar';
 import { useQueryClient } from '@tanstack/react-query';
+import { QUERY_TYPE } from '../queries/ReactQuery';
 
 type FinishSignupPageProps = {
     athlete: Athlete | null;
@@ -76,7 +77,10 @@ export default function FinishSignupPage({
                 });
 
             setLocalAthlete(updatedAthleteWithAvatar);
-            queryClient.setQueryData(['athlete'], updatedAthlete);
+            queryClient.setQueryData(
+                [QUERY_TYPE.ATHLETE_ME],
+                updatedAthleteWithAvatar,
+            );
             onFinished();
         } catch (e: any) {
             console.error(e);
