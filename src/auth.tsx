@@ -2,9 +2,10 @@ import { AuthProvider } from 'react-oidc-context';
 import { WebStorageStateStore } from 'oidc-client-ts';
 
 const oidcConfig = {
-    authority: 'http://localhost:9080/realms/jhipster', // your keycloak realm
-    client_id: 'web_app',
-    redirect_uri: 'http://localhost:5173',
+    authority: import.meta.env.VITE_AUTHORITY,
+    client_id: import.meta.env.VITE_CLIENT_ID,
+    redirect_uri: import.meta.env.VITE_REDIRECT_URI,
+    post_logout_redirect_uri: import.meta.env.VITE_POST_LOGOUT_REDIRECT_URI,
     response_type: 'code',
     scope: 'openid profile email',
     userStore: new WebStorageStateStore({
@@ -13,5 +14,19 @@ const oidcConfig = {
 };
 
 export function AuthWrapper({ children }: { children: React.ReactNode }) {
-    return <AuthProvider {...oidcConfig}>{children}</AuthProvider>;
+    console.log({ oidcConfig });
+    return (
+        <AuthProvider
+            {...oidcConfig}
+            onSigninCallback={() => {
+                window.history.replaceState(
+                    {},
+                    document.title,
+                    window.location.pathname,
+                );
+            }}
+        >
+            {children}
+        </AuthProvider>
+    );
 }

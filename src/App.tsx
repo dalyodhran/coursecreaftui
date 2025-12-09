@@ -30,12 +30,7 @@ function App() {
     }
 
     // Default → landing
-    return (
-        <LandingPage
-            onLoginClick={() => setShowLogin(true)}
-            onSignupClick={() => setShowSignup(true)}
-        />
-    );
+    return <LandingPage />;
 }
 
 export default App;

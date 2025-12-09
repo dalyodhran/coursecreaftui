@@ -1,24 +1,19 @@
-import React, { useEffect } from 'react';
 import { useAuth } from 'react-oidc-context';
 
 export function AuthGate({ children }: { children: React.ReactNode }) {
     const auth = useAuth();
 
-    // Only trigger login *after* we're done loading
-    useEffect(() => {
-        if (!auth.isLoading && !auth.activeNavigator && !auth.isAuthenticated) {
-            auth.signinRedirect();
-        }
-    }, [auth.isLoading, auth.activeNavigator, auth.isAuthenticated, auth]);
-
-    if (auth.isLoading || auth.activeNavigator) {
-        // restoring session from storage / handling redirect
-        return <div>Loading auth…</div>;
+    if (auth.isLoading) {
+        return <div className="p-6">Loading…</div>;
     }
 
-    if (!auth.isAuthenticated) {
-        // we just kicked off signinRedirect above
-        return <div>Redirecting to login…</div>;
+    if (auth.error) {
+        return (
+            <div className="p-6">
+                <p>Oops, something went wrong with authentication.</p>
+                <pre className="text-xs mt-2">{auth.error.message}</pre>
+            </div>
+        );
     }
 
     // Logged in: render the real app
