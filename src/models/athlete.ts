@@ -10,5 +10,14 @@ export type Athlete = {
     status?: AthleteProfileStatus;
     unit?: UnitSystem;
     dateOfBirth?: string;
-    avatarKey?: string;
+    avatarUrl?: string;
+    experience?: string;
+    volume?: string;
+    daysAvailable?: string[];
+    goal?: string;
+    hasRace?: boolean;
+    raceDistance?: string;
+    raceName?: string;
+    raceDate?: string;
+    tracking?: string;
 };

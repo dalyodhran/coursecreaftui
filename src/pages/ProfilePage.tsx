@@ -1,9 +1,9 @@
 import { useLoadAthlete } from '../queries/useLoadAthlete';
 import { ATHLETE_PROFILE_STATUS } from '../enums/athleteProfileStatus';
-import FinishSignupPage from './FinishSignupPage';
 import ProfileNavBar from '../components/profileNavbar';
 import { useEffect, useState } from 'react';
 import { useAuth } from 'react-oidc-context';
+import { OnboardingWizardPage } from './OnboardWizardPage.tsx';
 
 export default function ProfilePage() {
     const auth = useAuth();
@@ -28,7 +28,7 @@ export default function ProfilePage() {
 
     if (showFinishSignup && athlete?.status === ATHLETE_PROFILE_STATUS.DRAFT) {
         return (
-            <FinishSignupPage
+            <OnboardingWizardPage
                 athlete={athlete}
                 onFinished={() => setShowFinishSignup(false)}
             />
@@ -39,7 +39,7 @@ export default function ProfilePage() {
         <div className="min-h-screen bg-slate-50">
             <ProfileNavBar
                 name={`${athlete?.firstName ?? ''} ${athlete?.lastName ?? ''}`}
-                avatarUrl={athlete?.avatarKey ?? ''}
+                avatarUrl={athlete?.avatarUrl ?? ''}
             />
             <main className="p-6">
                 <div className="bg-white rounded border p-4 max-w-md">

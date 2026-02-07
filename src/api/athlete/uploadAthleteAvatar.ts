@@ -1,5 +1,4 @@
 import { ENDPOINT } from '../../enums/endpoints.enum';
-import type { Athlete } from '../../models/athlete';
 import {
     AXIOS_METHOD,
     CONTENT_HEADER,
@@ -10,11 +9,11 @@ export async function uploadAthleteAvatar(
     athleteId: string,
     token: string,
     file: File,
-): Promise<Athlete> {
+): Promise<string> {
     const formData = new FormData();
     formData.append('avatar', file);
 
-    return await GenericAxiosService<Athlete>({
+    return await GenericAxiosService<string>({
         url: ENDPOINT.ATHLETE_AVATAR_UPLOAD(athleteId),
         method: AXIOS_METHOD.POST,
         token: token,
