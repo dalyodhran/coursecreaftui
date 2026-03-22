@@ -20,7 +20,7 @@ export const CONTENT_HEADER = {
 export type ContentHeader =
     (typeof CONTENT_HEADER)[keyof typeof CONTENT_HEADER];
 
-export interface IGenericAxiosService<TResponse = any, TPayload = any> {
+export interface IGenericAxiosService<TPayload = any> {
     url: string;
     method: AxiosMethod;
     payload?: TPayload;
@@ -44,7 +44,7 @@ export async function GenericAxiosService<TResponse = any, TPayload = any>({
     params,
     token,
     config = {},
-}: IGenericAxiosService<TResponse, TPayload>): Promise<TResponse> {
+}: IGenericAxiosService<TPayload>): Promise<TResponse> {
     try {
         const headers: Record<string, string> = {
             ...(config.headers as Record<string, string>),
