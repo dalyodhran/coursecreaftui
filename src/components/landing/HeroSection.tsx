@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 import { useAuth } from 'react-oidc-context';
 
 export const HeroSection: React.FC = () => {
@@ -9,9 +11,9 @@ export const HeroSection: React.FC = () => {
         <section className="relative min-h-[921px] flex items-center px-8 overflow-hidden bg-white pt-16">
             <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div className="lg:col-span-7 z-10">
-                    <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label text-sm font-bold tracking-widest uppercase mb-8">
+                    <Badge className="px-4 py-1.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label text-sm font-bold tracking-widest uppercase mb-8 border-none hover:bg-primary-fixed/90">
                         Precision Performance
-                    </div>
+                    </Badge>
                     <h1 className="text-7xl md:text-8xl font-black tracking-tighter leading-[0.9] text-on-surface mb-8">
                         Stop Guessing.<br />
                         <span className="text-primary italic">Start Peaking.</span>
@@ -34,10 +36,10 @@ export const HeroSection: React.FC = () => {
                 <div className="lg:col-span-5 relative">
                     <div className="relative w-full aspect-square rounded-xl overflow-hidden shadow-[0px_48px_96px_rgba(0,90,180,0.12)] bg-surface-container-low group">
                         <img alt="Athlete training" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwMoq2Pmnr-n42PSVOi_5d1ZZisCuTnQDiIqgq7KWKRQzMZcPbZT0fsgQicoHVTFmiacC_25z9l7lQB1Dbkk9Qb1zDabiTtGYfLcVvAnltKllTiM4zMaP_K2JrAli5G2S9ymr0oJX-D-E5lbOOt0q1GKuVyg1GNHWzPScEdQxmlOVlzcioeATsjZmjsquZzWhzWk2qJtAAm83SUYkpi2Z8th_h-jCDBjb92P_iSbVHI4V3InUM8nZMoV7zxXCgc7rDv4zAb3hRVQ" />
-                        <div className="absolute top-8 -right-4 bg-white p-6 rounded-lg shadow-xl max-w-[200px] border border-outline-variant/20">
+                        <Card className="absolute top-8 -right-4 bg-white p-6 rounded-lg shadow-xl max-w-[200px] border border-outline-variant/20">
                             <div className="text-tertiary font-black text-3xl mb-1">98.4%</div>
                             <div className="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Marathon Readiness</div>
-                        </div>
+                        </Card>
                     </div>
                 </div>
             </div>
