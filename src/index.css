@@ -7,8 +7,8 @@
 
 @layer base {
   .theme {
-    --font-heading: var(--font-sans);
-    --font-sans: 'Geist Variable', sans-serif
+    --font-heading: 'Lexend', sans-serif;
+    --font-sans: 'Lexend', sans-serif
   }
   :root {
     --background: oklch(1 0 0);
@@ -78,7 +78,7 @@
     --sidebar-ring: oklch(0.556 0 0)
   }
   * {
-    @apply border-border outline-ring/50;
+    @apply border-slate-200 outline-none;
   }
   body {
     @apply bg-background text-foreground;

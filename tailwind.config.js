@@ -8,9 +8,12 @@ export default {
   theme: {
   	extend: {
   		borderRadius: {
-  			lg: 'var(--radius)',
-  			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
+  			lg: '2rem',
+  			md: '1.5rem',
+  			sm: '1rem',
+			DEFAULT: '1rem',
+			xl: '3rem',
+			full: '9999px'
   		},
   		colors: {
   			background: '#f9f9f9',
@@ -99,9 +102,10 @@ export default {
 			"secondary-fixed-dim": "#afc7f7"
   		},
 		fontFamily: {
-			"headline": ["Lexend"],
-			"body": ["Lexend"],
-			"label": ["Lexend"]
+			headline: ["Lexend", "sans-serif"],
+			body: ["Lexend", "sans-serif"],
+			label: ["Lexend", "sans-serif"],
+			sans: ["Lexend", "sans-serif"]
 		}
   	}
   },
